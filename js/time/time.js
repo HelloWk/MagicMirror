@@ -1,5 +1,4 @@
 var time = {
-	dl: config.displayLanguage || 'en',
 	timeFormat: config.time.timeFormat || 24,
 	dateLocation: '.date',
 	cnDateLocation: '.cn-date',
@@ -16,9 +15,6 @@ time.updateTime = function () {
 	// var _now = moment(),
 	// 	_date = _now.format('dddd, LL');
 	var _now = moment();
-	if (time.dl == 'cn') {
-		_now.locale('zh-cn');
-	}
 	var _date = _now.format('MMMM Do YYYY, dddd');
 
   var _cnd = GetCNDate();

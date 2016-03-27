@@ -1,7 +1,6 @@
 var weather = {
 	// Default language is Dutch because that is what the original author used
-	lang: config.lang || 'cn',
-	dl: config.displayLanguage || 'en',
+	lang: config.lang || 'zh_cn',
 	params: config.weather.params || null,
 	iconTable: {
 		'01d':'wi-day-sunny',
@@ -128,12 +127,7 @@ weather.updateWeatherForecast = function () {
 				var _forecast = data.list[i];
 
 				_forecastHtml += '<tr style="opacity:' + _opacity + '">';
-
-				if (weather.dl == 'cn') {
-					_forecastHtml += '<td class="day">' + moment(_forecast.dt, 'X').locale('zh-cn').format('ddd') + '</td>';
-				} else {
-					_forecastHtml += '<td class="day">' + moment(_forecast.dt, 'X').format('ddd') + '</td>';
-				}
+				_forecastHtml += '<td class="day">' + moment(_forecast.dt, 'X').format('ddd') + '</td>';
 				_forecastHtml += '<td class="icon-small ' + this.iconTable[_forecast.weather[0].icon] + '"></td>';
 				_forecastHtml += '<td class="temp-max">' + this.roundValue(_forecast.temp.max) + '</td>';
 				_forecastHtml += '<td class="temp-min">' + this.roundValue(_forecast.temp.min) + '</td>';

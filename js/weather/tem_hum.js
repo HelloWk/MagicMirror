@@ -35,7 +35,6 @@ client.onMessageArrived = function(message) {
 };
 
 var tem_hum = {
-  dl: config.displayLanguage || 'en',
   temperatureLocation: '.temhum',
   updateInterval: 10000,
 
@@ -56,7 +55,7 @@ tem_hum.updateTemHum = function () {
   //     // console.info(data);
   //     var ths = JSON.parse(data);
 
-  //     if (tem_hum.dl == 'cn') {
+  //     if (1) {
   //       // var thtext = '室内温湿 ' + ths.temperature + '°, ' + ths.humidity + '%';
   //       var thtext1 = '<div>' + ths.temperature + '°</div><div class="xxsmall">室温</div>'
   //       var thtext2 = '<div>' + ths.humidity    + '%</div><div class="xxsmall">湿度</div>'

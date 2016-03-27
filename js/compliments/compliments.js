@@ -1,5 +1,4 @@
 var compliments = {
-	dl: config.displayLanguage || 'en',
 	complimentLocation: '.compliment',
 	currentCompliment: '',
 	complimentList: {
@@ -21,14 +20,9 @@ var compliments = {
  * Changes the compliment visible on the screen
  */
 compliments.updateCompliment = function () {
+	var _comp = compliments.complimentList;
+	$('.compliment').attr('class', 'compliment light');
 
-	if (compliments.dl == 'cn') {
-		var _comp = compliments.complimentListCn;
-		$('.compliment').attr('class', 'compliment ultLight');
-	} else {
-		var _comp = compliments.complimentList;
-		$('.compliment').attr('class', 'compliment light');
-	}
 
 	var _list = [];
 

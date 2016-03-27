@@ -1,20 +1,19 @@
 var config = {
     lang: 'zh_cn',
-    displayLanguage: 'zh_cn',
     time: {
         timeFormat: 24
     },
     weather: {
         //change weather params here:
         //units: metric or imperial
-        interval: 60000,
+        interval: 120000,
         fadeInterval: 10000,
         params: {
             q: 'dalian',
             //units: 'metric',
             // if you want a different lang for the weather that what is set above, change it here
             lang: 'zh_cn',
-            APPID: 'e8fb67bb31a0b16da464d234238420f7'
+            APPID: ''
         }
     },
     compliments: {

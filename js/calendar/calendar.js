@@ -1,6 +1,5 @@
 var calendar = {
 	eventList: [],
-	dl: config.displayLanguage || 'en',
 	calendarLocation: '.calendar',
 	updateInterval: 1000,
 	updateDataInterval: 60000,
@@ -43,41 +42,21 @@ calendar.updateData = function (callback) {
 			if (e.startDate == undefined){
 				//some old events in Gmail Calendar is "start_date"
 				//FIXME: problems with Gmail's TimeZone
-				if (calendar.dl == 'cn') {
-					var days = moment(e.DTSTART).locale('zh-cn').diff(moment(), 'days');
-					var seconds = moment(e.DTSTART).locale('zh-cn').diff(moment(), 'seconds');
-					var startDate = moment(e.DTSTART).locale('zh-cn');
-				} else {
-					var days = moment(e.DTSTART).diff(moment(), 'days');
-					var seconds = moment(e.DTSTART).diff(moment(), 'seconds');
-					var startDate = moment(e.DTSTART);
-				}
+				var days = moment(e.DTSTART).diff(moment(), 'days');
+				var seconds = moment(e.DTSTART).diff(moment(), 'seconds');
+				var startDate = moment(e.DTSTART);
 			} else {
-				if (calendar.dl == 'cn') {
-					var days = moment(e.startDate).locale('zh-cn').diff(moment(), 'days');
-					var seconds = moment(e.startDate).locale('zh-cn').diff(moment(), 'seconds');
-					var startDate = moment(e.startDate).locale('zh-cn');
-				} else {
-					var days = moment(e.startDate).diff(moment(), 'days');
-					var seconds = moment(e.startDate).diff(moment(), 'seconds');
-					var startDate = moment(e.startDate);
-				}
+				var days = moment(e.startDate).diff(moment(), 'days');
+				var seconds = moment(e.startDate).diff(moment(), 'seconds');
+				var startDate = moment(e.startDate);
 			}
 
 			//only add fututre events, days doesn't work, we need to check seconds
 			if (seconds >= 0) {
 				if (seconds <= 60*60*5 || seconds >= 60*60*24*2) {
-					if (calendar.dl == 'cn') {
-						var time_string = moment(startDate).locale('zh-cn').fromNow();
-					} else {
-						var time_string = moment(startDate).fromNow();
-					}
+					var time_string = moment(startDate).fromNow();
 				}else {
-					if (calendar.dl == 'cn') {
-						var time_string = moment(startDate).locale('zh-cn').calendar()
-					} else {
-						var time_string = moment(startDate).calendar()
-					}
+					var time_string = moment(startDate).calendar()
 				}
 				if (!e.RRULE) {
 					this.eventList.push({'description':e.SUMMARY,'seconds':seconds,'days':time_string});
@@ -95,28 +74,16 @@ calendar.updateData = function (callback) {
 				var dates = rule.between(new Date(), new Date(2016,11,31), true, function (date, i){return i < 10});
 				for (date in dates) {
 					var dt = new Date(dates[date]);
-					if (calendar.dl == 'cn') {
-						var days = moment(dt).locale('zh-cn').diff(moment(), 'days');
-					  var seconds = moment(dt).locale('zh-cn').diff(moment(), 'seconds');
-					  var startDate = moment(dt).locale('zh-cn');
-					} else {
-						var days = moment(dt).diff(moment(), 'days');
-						var seconds = moment(dt).diff(moment(), 'seconds');
-						var startDate = moment(dt);
-					}
+
+					var days = moment(dt).diff(moment(), 'days');
+					var seconds = moment(dt).diff(moment(), 'seconds');
+					var startDate = moment(dt);
+
 					if (seconds >= 0) {
 						if (seconds <= 60*60*5 || seconds >= 60*60*24*2) {
-							if (calendar.dl == 'cn') {
-								var time_string = moment(dt).locale('zh-cn').fromNow();
-							} else {
-								var time_string = moment(dt).fromNow();
-							}
+							var time_string = moment(dt).fromNow();
 						} else {
-							if (calendar.dl == 'cn') {
-								var time_string = moment(dt).locale('zh-cn').calendar()
-							} else {
-								var time_string = moment(dt).calendar()
-							}
+							var time_string = moment(dt).calendar()
 						}
 						this.eventList.push({'description':e.SUMMARY,'seconds':seconds,'days':time_string});
 					}
