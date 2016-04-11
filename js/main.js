@@ -49,14 +49,14 @@ jQuery(document).ready(function($) {
 
 	time.init();
 
-	tem_hum.init();
-
-	//calendar.init();
+	calendar.init();
 
 	compliments.init();
 
 	weather.init();
 
 	news.init();
+
+	tem_hum.init();
 
 });

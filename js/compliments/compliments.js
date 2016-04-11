@@ -6,11 +6,6 @@ var compliments = {
 		'afternoon': config.compliments.afternoon,
 		'evening': config.compliments.evening
 	},
-	complimentListCn: {
-		'morning': config.complimentscn.morning,
-		'afternoon': config.complimentscn.afternoon,
-		'evening': config.complimentscn.evening
-	},
 	updateInterval: config.compliments.interval || 30000,
 	fadeInterval: config.compliments.fadeInterval || 4000,
 	intervalId: null
@@ -20,32 +15,31 @@ var compliments = {
  * Changes the compliment visible on the screen
  */
 compliments.updateCompliment = function () {
-	var _comp = compliments.complimentList;
-	$('.compliment').attr('class', 'compliment light');
+
 
 
 	var _list = [];
 
 	var hour = moment().hour();
 
-	// In the followign if statement we use .slice() on the
-	// compliments array to make a copy by value.
-	// This way the original array of compliments stays in tact.
+	// In the following if statement we use .slice() on the
+	// compliments array to make a copy by value. 
+	// This way the original array of compliments stays intact.
 
 	if (hour >= 3 && hour < 12) {
 		// Morning compliments
-		_list = _comp['morning'].slice();
+		_list = compliments.complimentList['morning'].slice();
 	} else if (hour >= 12 && hour < 17) {
 		// Afternoon compliments
-		_list = _comp['afternoon'].slice();
+		_list = compliments.complimentList['afternoon'].slice();
 	} else if (hour >= 17 || hour < 3) {
 		// Evening compliments
-		_list = _comp['evening'].slice();
+		_list = compliments.complimentList['evening'].slice();
 	} else {
 		// Edge case in case something weird happens
 		// This will select a compliment from all times of day
-		Object.keys(_comp).forEach(function (_curr) {
-			_list = _list.concat(_comp[_curr]).slice();
+		Object.keys(compliments.complimentList).forEach(function (_curr) {
+			_list = _list.concat(compliments.complimentList[_curr]).slice();
 		});
 	}
 
