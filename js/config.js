@@ -8,12 +8,14 @@ var config = {
     weather: {
         //change weather params here:
         //units: metric or imperial
+        interval: 120000,
+        fadeInterval: 10000,
         params: {
             q: 'dalian',
             units: 'metric',
             // if you want a different lang for the weather that what is set above, change it here
             lang: 'zh_cn',
-            APPID: ''
+            APPID: 'e8fb67bb31a0b16da464d234238420f7'
         }
     },
     compliments: {
@@ -42,7 +44,7 @@ var config = {
         urls: [
 		{
 			symbol: 'calendar-plus-o',
-			url: ''
+			url: 'https://p32-calendars.icloud.com/published/2/19serRMXg_-dwh6EZfifp2NAqgqzItKbHaBztr1JxS-bV-6qLgothdaSRrF1_2d0lpF663BN5KsEq56c3Q53GgTgZiWnHLmAGVyXlvEvLVU'
 		},
 		// {
 		// 	symbol: 'soccer-ball-o',
