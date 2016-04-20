@@ -18,6 +18,14 @@ var config = {
             APPID: ''
         }
     },
+    tem_hum: {
+      mqttServer: 'mqtt.hellowk.cc',
+      mqttServerPort: 9001,
+      mqttclientName: "magic_mirror_tem_hum",
+      temperatureTopic: 'homekit/himitsu/temperature',
+      humidityTopic: 'homekit/himitsu/humidity',
+      heatIndexTopic: 'homekit/himitsu/heatIndex'
+    },
     compliments: {
         interval: 30000,
         fadeInterval: 4000,
@@ -65,6 +73,6 @@ var config = {
 		]
     },
     news: {
-        feed: 'http://feeds2.feedburner.com/cnbeta_full'
+        feed: 'http://headlines.yahoo.co.jp/rss/zdn_ait-c_sci.xml'
     }
 }

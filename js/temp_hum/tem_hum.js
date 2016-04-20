@@ -2,15 +2,24 @@ var temperature = '0';
 var humidity = '0';
 var heatIndex = '0';
 
+var temhum = {
+  mqttServer      : config.tem_hum.mqttServer       || 'mqtt.hellowk.cc',
+  mqttServerPort  : config.tem_hum.mqttServerPort   || 9001,
+  mqttclientName  : config.tem_hum.mqttclientName   || "magic_mirror_tem_hum",
+  temperatureTopic: config.tem_hum.temperatureTopic || 'homekit/himitsu/temperature',
+  humidityTopic   : config.tem_hum.humidityTopic    || 'homekit/himitsu/humidity',
+  heatIndexTopic  : config.tem_hum.heatIndexTopic   || 'homekit/himitsu/heatIndex',
+};
+
 console.log("Connecting to MQTT broker...");
 // Create a client instance
-client = new Paho.MQTT.Client('mqtt.hellowk.cc', Number(9001), "magic_mirror_tem_hum");
+client = new Paho.MQTT.Client(temhum.mqttServer, Number(temhum.mqttServerPort), temhum.mqttclientName);
 client.connect({onSuccess:function() {
   // Once a connection has been made, make a subscription and send a message.
-  console.log("onConnect");
-  client.subscribe('homekit/himitsu/temperature');
-  client.subscribe('homekit/himitsu/humidity');
-  client.subscribe('homekit/himitsu/heatIndex');
+  console.log("MQTT onConnect");
+  client.subscribe(temhum.temperatureTopic);
+  client.subscribe(temhum.humidityTopic);
+  client.subscribe(temhum.heatIndexTopic);
 }});
 
 client.onConnectionLost = function(responseObject) {

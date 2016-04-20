@@ -6,7 +6,9 @@
 
 添加了室内温湿的模块，如果不需要的话可以在 `main.js` 里面注释掉 `tem_hum.init();`
 
-室内温湿的模块使用的是 MQTT 接收数据，监听的 subscribe 为：
+室内温湿的模块使用的是 MQTT 接收数据，服务器地址和监听的 subscribe 可在 confi.js 中修改。
+
+监听的 subscribe 为：
 
 温度：
 
