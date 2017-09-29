@@ -57,6 +57,6 @@ jQuery(document).ready(function($) {
 
 	news.init();
 
-	tem_hum.init();
+	//tem_hum.init();
 
 });
