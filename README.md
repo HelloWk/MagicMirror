@@ -1,4 +1,5 @@
 ![][image-1]
+Not explained clearly and very old repository please do upgrade and refresh it.
 
 # This is my Magic Mirror source code.
 
